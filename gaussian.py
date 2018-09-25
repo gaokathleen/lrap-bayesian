@@ -17,12 +17,15 @@ def plot(points):
             max = m
         if min > m:
             min = m
+    print(min)
+
     for mean, variance in points:
         deviation = math.sqrt(variance)
-        plt.plot(gauss(np.linspace(norm.ppf(0.05, min, variance), norm.ppf(0.95, max, variance), 1000), mean, variance))
+        plt.plot(norm.pdf(np.linspace(norm.ppf(0.05, min, deviation), norm.ppf(0.95, max, deviation), 1000), loc = mean, scale = deviation))
+        #plt.plot(gauss(np.linspace(norm.ppf(0.05, min, deviation), norm.ppf(0.95, max, deviation), 1000), mean, deviation))
 
 
-plot([(-100, 4), (1000, 2), (6, 6)])
+plot([(100, 4)])
 plt.show()
 
 #import scipy.stats as stats
