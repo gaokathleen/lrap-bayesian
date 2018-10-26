@@ -27,11 +27,15 @@ def inv_chi_square(mean_0, var_0, samples, k_0, v_0):
     k_n = k_n(k_0, samples, y)
     v_n = v_n(v_0, samples, y)
     var_sum = sum_of_squares(mean_0, var_0, samples, k_0, v_0, y)
-    return [mean, var_sum, k_n, v_n]
+    ret = [mean, var_sum, k_n, v_n]
+    return ret
 
-s = np.random.normal(4.5, 3.74, 1000)
+s = np.random.normal(4.5, 3.74, 10)
+s2 = inv_chi_square(4.5, 3.74, s, 2.9, 88)
+print(s)
 plt.plot(s)
 plt.show()
+t = np.random.normal(2.4, 3.74, 10)
 
 # def inv_chi_square2(list_of_data):
 #     mean_0 = list_of_data[0]
